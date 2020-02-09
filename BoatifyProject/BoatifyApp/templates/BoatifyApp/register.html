@@ -10,14 +10,10 @@
 
 <div class="login-box">
     <h1>Register Here</h1>
-    <form action="" method="post">
-        <p>Name</p>
+    <form action="{% url 'register' %}" method="post">
+        {% csrf_token %}
         <input type="text" name="namer" placeholder="Enter name" required>
-        <p>E mail</p>
         <input type="email" name="emailr" placeholder="Enter Email" required>
-        <p>Username</p>
-        <input type="text" name="unamer" placeholder="Enter username" required>
-        <p>Password</p>
         <input type="password" name="pwr" placeholder="Enter Password" required>
         <input type="submit" name="submit" value="Signup">
     </form>
