@@ -1,0 +1,17 @@
+{% extends 'BoatifyApp/headerlr.html' %}
+{% load static %}
+{% block con %}
+<link rel="stylesheet" type="text/css" href="{% static 'BoatifyApp/css/stylel.css'%}">
+{% endblock %}
+
+{% block content %}
+
+<form class="box" action="index.html" method="post">
+    <h1>Login</h1>
+    <input type="text" name="" placeholder="Username">
+    <input type="password" name="" placeholder="Password">
+    <input type="submit" name="" value="Login">
+</form>
+
+
+{% endblock %}
