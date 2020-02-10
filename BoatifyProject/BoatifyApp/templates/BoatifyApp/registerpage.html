@@ -1,0 +1,19 @@
+
+{% extends 'BoatifyApp/headerlr.html' %}
+{% load static %}
+{% block con %}
+<link rel="stylesheet" type="text/css" href="{% static 'BoatifyApp/css/stylel.css'%}">
+{% endblock %}
+
+{% block content %}
+
+<form class="box" action="{% url 'registerpage' %}" method="post">
+    {% csrf_token%}
+    <h1>Register Here</h1>
+    <input type="text" name="namer" placeholder="Enter name" required>
+    <input type="email" name="emailr" placeholder="Enter Email" required>
+    <input type="password" name="pwr" placeholder="Password" required>
+    <input type="submit" name="" value="Register">
+</form>
+
+{% endblock %}
