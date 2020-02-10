@@ -8,3 +8,7 @@ class Login(models.Model):
 
     def __str__(self):
         return self.name
+
+    @classmethod
+    def get(self):
+        return self.email

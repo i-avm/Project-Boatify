@@ -1,5 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Login
+from django.contrib import messages
+from django.contrib.auth.models import User, auth
 
 
 # Create your views here.
@@ -17,12 +19,27 @@ def login(request):
 
 def registerpage(request):
     if (request.method == 'POST'):
-        name_r = request.POST.get('namer')
-        email_r = request.POST.get('emailr')
-        password_r = request.POST.get('pwr')
+        name1 = request.POST.get('name1')
+        name2 = request.POST.get('name2')
+        username = request.POST.get('uname')
+        email = request.POST.get('emailr')
+        password_r1 = request.POST.get('pwr1')
+        password_r2 = request.POST.get('pwr2')
+        if password_r1==password_r2:
+            if User.objects.filter(username=username).exists():
+                messages.info(request,'Username already taken!!')
+                return render(request, 'BoatifyApp/register.html')
+            elif User.objects.filter(email=email).exists():
+                messages.info(request,'Email already taken!!')
+                return render(request, 'BoatifyApp/register.html')
+            else:
+                user = User.objects.create_user(username=username, password=password_r1, email=email, first_name=name1, last_name=name2)
+                user.save()
+                return render(request, 'BoatifyApp/regsuccess.html')
+        else:
+            messages.info(request,'Passwords not match .!!')
+            return render(request, 'BoatifyApp/register.html')
+        return render(request, 'BoatifyApp/registerpage.html')
 
-        c = Login(name=name_r, email=email_r, password=password_r)
-        c.save()
-        return render(request, 'BoatifyApp/regsuccess.html')
     else:
         return render(request, 'BoatifyApp/registerpage.html')
