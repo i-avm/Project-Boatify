@@ -1,5 +1,4 @@
-
-{% extends 'BoatifyApp/headerlr.html' %}
+{% extends 'BoatifyApp/header.html' %}
 {% load static %}
 {% block con %}
 <link rel="stylesheet" type="text/css" href="{% static 'BoatifyApp/css/stylel.css'%}">
@@ -9,7 +8,6 @@
 
 <form class="box" action="{% url 'registerpage' %}" method="post">
     {% csrf_token%}
-    <h1>Register Here</h1>
     <input type="text" name="name1" placeholder="First name" required>
     <input type="text" name="name2" placeholder="Last name" required>
     <input type="text" name="uname" placeholder="User name" required>
@@ -17,11 +15,11 @@
     <input type="password" name="pwr1" placeholder="Password" required>
     <input type="password" name="pwr2" placeholder="Confirm Password" required>
     <input type="submit" name="" value="Register">
+    <div>
+        {% for message in messages %}
+        <h3 style="color:yellow"> {{message}} </h3>
+        {% endfor %}
+    </div>
 </form>
-<div>
-    {% for message in messages %}
-    <h3> {{message}} </h3>
-    {% endfor %}
-</div>
 
 {% endblock %}

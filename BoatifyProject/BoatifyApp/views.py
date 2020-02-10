@@ -15,6 +15,25 @@ def homepage(request):
 
 def login(request):
     return render(request, 'BoatifyApp/login.html')
+def logout(request):
+    auth.logout(request)
+    return render(request, 'BoatifyApp/homepage.html')
+
+def login(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = auth.authenticate(username=username,password=password)
+
+        if user is not None:
+            auth.login(request, user)
+            return render(request, 'BoatifyApp/homepage.html')
+        else:
+            messages.info(request, 'invalid credentials')
+            return render(request, 'BoatifyApp/login.html')
+    else:
+        return render(request, 'BoatifyApp/login.html')
 
 
 def registerpage(request):
@@ -27,19 +46,18 @@ def registerpage(request):
         password_r2 = request.POST.get('pwr2')
         if password_r1==password_r2:
             if User.objects.filter(username=username).exists():
-                messages.info(request,'Username already taken!!')
-                return render(request, 'BoatifyApp/register.html')
+                messages.info(request, 'Username already taken!!')
+                return render(request, 'BoatifyApp/registerpage.html')
             elif User.objects.filter(email=email).exists():
-                messages.info(request,'Email already taken!!')
-                return render(request, 'BoatifyApp/register.html')
+                messages.info(request, 'Email already taken!!')
+                return render(request, 'BoatifyApp/registerpage.html')
             else:
                 user = User.objects.create_user(username=username, password=password_r1, email=email, first_name=name1, last_name=name2)
                 user.save()
                 return render(request, 'BoatifyApp/regsuccess.html')
         else:
-            messages.info(request,'Passwords not match .!!')
-            return render(request, 'BoatifyApp/register.html')
-        return render(request, 'BoatifyApp/registerpage.html')
+            messages.info(request, 'Passwords not match .!!')
+            return render(request, 'BoatifyApp/registerpage.html')
 
     else:
         return render(request, 'BoatifyApp/registerpage.html')

@@ -16,13 +16,8 @@
 <body background="{% static 'BoatifyApp/images/bg1.jpg'%}">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-        <a class="navbar-brand" href="{% url 'homepage' %}">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            Boatify
-        </a>
+        <a class="navbar-brand" href="{% url 'homepage' %}"><img src="{% static 'BoatifyApp/images/boat.png'%}"
+                                                                 style="width:40px;height:40px;"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -32,12 +27,19 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="{% url 'homepage' %}">Home <span class="sr-only">(current)</span></a>
                 </li>
+                {% if user.is_authenticated %}
+                <li style="color:yellow"> &nbsp;&nbsp;&nbsp; Hello, {{user.first_name}} &nbsp;&nbsp;&nbsp;</li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                </li>
+                {% else %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'login' %}">Login</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'registerpage' %}">Register</a>
                 </li>
+                {% endif %}
             </ul>
         </div>
     </div>
@@ -58,3 +60,4 @@
         crossorigin="anonymous"></script>
 </body>
 </html>
+

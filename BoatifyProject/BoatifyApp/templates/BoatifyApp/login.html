@@ -1,4 +1,4 @@
-{% extends 'BoatifyApp/headerlr.html' %}
+{% extends 'BoatifyApp/header.html' %}
 {% load static %}
 {% block con %}
 <link rel="stylesheet" type="text/css" href="{% static 'BoatifyApp/css/stylel.css'%}">
@@ -7,11 +7,15 @@
 {% block content %}
 
 <form class="box" action="{% url 'login' %}" method="post">
-    <h1>Login</h1>
-    <input type="text" name="" placeholder="Username">
-    <input type="password" name="" placeholder="Password">
-    <input type="submit" name="" value="Login">
+    {% csrf_token %}
+    <input type="text" name="username" placeholder="Username">
+    <input type="password" name="password" placeholder="Password">
+    <input type="submit" name="submitbutton" value="Login">
 </form>
-
+<div>
+    {% for message in messages %}
+    <h3 style="color:yellow"> {{message}} </h3>
+    {% endfor %}
+</div>
 
 {% endblock %}
