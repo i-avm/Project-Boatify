@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Login
+from .models import Contact
 from django.contrib import messages
 from django.contrib.auth.models import User, auth
 
@@ -12,6 +12,20 @@ def welcome(request):
 def homepage(request):
     return render(request, 'BoatifyApp/homepage.html')
 
+def contact(request):
+    if request.method == 'POST':
+        email_r = request.POST.get('email')
+        subject_r = request.POST.get('subject')
+        message_r = request.POST.get('message')
+
+        c = Contact(email=email_r, subject=subject_r, message=message_r)
+        c.save()
+
+        return render(request, 'BoatifyApp/thankyou.html')
+    else:
+        return render(request, 'BoatifyApp/contact.html')
+def thankyou(request):
+    return render(request, 'BoatifyApp/thankyou.html')
 
 def login(request):
     return render(request, 'BoatifyApp/login.html')
