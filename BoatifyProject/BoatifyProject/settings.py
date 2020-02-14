@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'payment.apps.PaymentConfig',
     'BoatifyApp.apps.BoatifyappConfig',
     'django.contrib.admin',
     'django.contrib.auth',
