@@ -6,7 +6,7 @@
 
 {% block content %}
 
-<form class="box" action="{% url 'login' %}" method="post">
+<form class="box" action="{% url 'login' %}" method="post" onsubmit="return closeSelf(this);">
     {% csrf_token %}
     <input type="text" name="username" placeholder="Username">
     <input type="password" name="password" placeholder="Password">
@@ -17,5 +17,10 @@
     <h3 style="color:yellow"> {{message}} </h3>
     {% endfor %}
 </div>
+<script>
+function closeSelf(f){
+    f.submit();
+}
+</script>
 
 {% endblock %}

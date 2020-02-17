@@ -24,9 +24,28 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mx-auto">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="{% url 'homepage' %}">Home <span class="sr-only">(current)</span></a>
                 </li>
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'payment' %}">Pay<span class="sr-only">(current)</span></a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+
+                    <a class="nav-link" href="{% url 'login' %}"
+                       target="_blank"
+                       onclick="window.open('{% url 'login' %}','popup','width=400,height=400'); return false;">
+                        Pay
+                        <span class="sr-only">(current)</span>
+                    </a>
+
+                    <!--<a class="nav-link" href="{% url 'login' %}">Pay<span class="sr-only">(current)</span></a>-->
+
+                </li>
+
+                {% endif %}
                 {% if user.is_authenticated %}
                 <li style="color:yellow"> &nbsp;&nbsp;&nbsp; Hello, {{user.first_name}} &nbsp;&nbsp;&nbsp;</li>
                 <li class="nav-item">

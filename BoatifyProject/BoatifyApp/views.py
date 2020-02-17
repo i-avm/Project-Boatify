@@ -14,11 +14,12 @@ def homepage(request):
 
 def contact(request):
     if request.method == 'POST':
+        name_r = request.POST.get('name')
         email_r = request.POST.get('email')
         subject_r = request.POST.get('subject')
         message_r = request.POST.get('message')
 
-        c = Contact(email=email_r, subject=subject_r, message=message_r)
+        c = Contact(name= name_r, email=email_r, subject=subject_r, message=message_r)
         c.save()
 
         return render(request, 'BoatifyApp/thankyou.html')
@@ -42,7 +43,7 @@ def login(request):
 
         if user is not None:
             auth.login(request, user)
-            return render(request, 'BoatifyApp/homepage.html')
+            return render(request, 'BoatifyApp/loginsuccess.html')
         else:
             messages.info(request, 'invalid credentials')
             return render(request, 'BoatifyApp/login.html')

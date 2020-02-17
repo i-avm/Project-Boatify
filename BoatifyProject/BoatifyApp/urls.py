@@ -9,5 +9,5 @@ urlpatterns = [
     path('register', views.register, name='register'),
     path('contact', views.contact, name='contact'),
     path('thankyou', views.thankyou, name='thankyou'),
-    path('/payment/', include('payment.urls'))
+    path('payment/', include('payment.urls'))
     ]
