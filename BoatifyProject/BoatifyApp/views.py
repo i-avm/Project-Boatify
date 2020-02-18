@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Contact
+from .models import Contact, Schedule
 from django.contrib import messages
 from django.contrib.auth.models import User, auth
 
@@ -8,9 +8,14 @@ from django.contrib.auth.models import User, auth
 def welcome(request):
     return render(request, 'BoatifyApp/welcome.html')
 
+def schedulelist(request):
+    fr, to, time, fare = Schedule.objects.all()
+    return render(request, 'BoatifyApp/schedulelist.html', {'Schedules': {fr, to, time, fare}})
+
 
 def homepage(request):
     return render(request, 'BoatifyApp/homepage.html')
+
 
 def contact(request):
     if request.method == 'POST':
@@ -30,6 +35,7 @@ def thankyou(request):
 
 def login(request):
     return render(request, 'BoatifyApp/login.html')
+
 def logout(request):
     auth.logout(request)
     return render(request, 'BoatifyApp/homepage.html')

@@ -8,8 +8,8 @@
 {% block content %}
 
 <div class="login-box">
-	<h1>
-    	<span>B</span>
+    <h1>
+        <span>B</span>
         <span>O</span>
         <span>A</span>
         <span>T</span>
@@ -17,19 +17,23 @@
         <span>F</span>
         <span>Y</span>
     </h1>
-    <form>
-    <div class="textbox">
-    <i class="fa fa-long-arrow-up" aria-hidden="true"></i>
-    <input type="text" placeholder="FROM" name="from" required />
-    </div>
+    <form action="{% url 'homepage' %}" method="post">
+        {% csrf_token%}
+        <div class="textbox">
+            <i class="fa fa-long-arrow-up" aria-hidden="true"></i>
+            <input type="text" placeholder="FROM" name="from" required/>
+        </div>
 
-    <div class="textbox">
-    <i class="fa fa-long-arrow-down" aria-hidden="true"></i>
-    <input type="text" placeholder="TO" name="to" required />
-    </div>
+        <div class="textbox">
+            <i class="fa fa-long-arrow-down" aria-hidden="true"></i>
+            <input type="text" placeholder="TO" name="to" required/>
+        </div>
 
 
-    <input type="submit" class="btn" name="" value="FIND BOATS" />
+        <input type="submit" class="btn" name="" value="FIND BOATS"/>
     </form>
+    <div>
+        <a href="{% url 'schedulelist' %}">View Schedule</a>
+    </div>
 </div>
 {% endblock %}
