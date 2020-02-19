@@ -17,7 +17,7 @@
         <span>F</span>
         <span>Y</span>
     </h1>
-    <form action="{% url 'homepage' %}" method="post">
+    <form action="{% url 'schedulelist' %}" method="post">
         {% csrf_token%}
         <div class="textbox">
             <i class="fa fa-long-arrow-up" aria-hidden="true"></i>
@@ -32,8 +32,6 @@
 
         <input type="submit" class="btn" name="" value="FIND BOATS"/>
     </form>
-    <div>
-        <a href="{% url 'schedulelist' %}">View Schedule</a>
-    </div>
+
 </div>
 {% endblock %}

@@ -1,12 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>schedule</title>
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 5px;
+  text-align: left;
+}
+</style>
 </head>
 <body>
-{% for schedule in Schedules %}
-<h1>{{schedule}}</h1>
-{% endfor %}
+<h2>Schedule</h2>
+
+<table style="width:50%">
+    <tr>
+        <th>From</th>
+        <th>To</th>
+        <th>Time</th>
+        <th>Fare</th>
+    </tr>
+    {% for d in Schedules %}
+    <tr>
+
+        <td>{{d.fr}}</td>
+        <td>{{d.to}}</td>
+        <td>{{d.time}}</td>
+        <td>{{d.fare}}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+
+
+
+
 </body>
 </html>

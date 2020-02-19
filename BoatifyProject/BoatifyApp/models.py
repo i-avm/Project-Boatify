@@ -18,6 +18,8 @@ class Schedule(models.Model):
     fare = models.IntegerField()
 
     def __str__(self):
-        return [self.fr, self.to, self.time, self.fare]
+        return self.fr
+
+
 
 

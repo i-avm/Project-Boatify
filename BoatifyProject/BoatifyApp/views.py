@@ -9,8 +9,10 @@ def welcome(request):
     return render(request, 'BoatifyApp/welcome.html')
 
 def schedulelist(request):
-    fr, to, time, fare = Schedule.objects.all()
-    return render(request, 'BoatifyApp/schedulelist.html', {'Schedules': {fr, to, time, fare}})
+    if request.method == 'POST':
+        d = Schedule.objects.all()
+        return render(request, 'BoatifyApp/schedulelist.html', {'Schedules': d})
+    return render(request, 'BoatifyApp/schedulelist.html')
 
 
 def homepage(request):
