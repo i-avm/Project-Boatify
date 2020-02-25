@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
+    <style>
 table, th, td {
   border: 1px solid black;
   border-collapse: collapse;
@@ -10,7 +10,8 @@ th, td {
   padding: 5px;
   text-align: left;
 }
-</style>
+
+    </style>
 </head>
 <body>
 <h2>Schedule</h2>
@@ -29,13 +30,19 @@ th, td {
         <td>{{d.to}}</td>
         <td>{{d.time}}</td>
         <td>{{d.fare}}</td>
+        <form action="{% url 'payment' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="ffr" value={{d.fr}}>
+            <input type="hidden" name="fto" value={{d.to}}>
+            <input type="hidden" name="ftime" value={{d.time}}>
+            <input type="hidden" name="ffare" value={{d.fare}}>
+            <td><input type="submit" name="booknow" value="Book Now"></td>
+        </form>
+
     </tr>
     {% endfor %}
 
 </table>
-
-
-
 
 
 </body>

@@ -18,7 +18,8 @@ class Schedule(models.Model):
     fare = models.IntegerField()
 
     def __str__(self):
-        return self.fr
+        name=self.fr + '-' + self.to
+        return name
 
 
 

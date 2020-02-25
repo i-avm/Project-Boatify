@@ -21,8 +21,7 @@ def schedulelist(request):
 
 
 def homepage(request):
-    d = Schedule.objects.filter()
-    return render(request, 'BoatifyApp/homepage.html', {'Schedules': d})
+    return render(request, 'BoatifyApp/homepage.html')
 
 
 def contact(request):
