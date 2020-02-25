@@ -21,12 +21,24 @@
         {% csrf_token%}
         <div class="textbox">
             <i class="fa fa-long-arrow-up" aria-hidden="true"></i>
-            <input type="text" placeholder="FROM" name="from" required/>
+            <!--<select name="from">
+                <option></option>
+                {% for d in Schedules %}
+                <option>{{d.fr}}</option>
+                {% endfor %}
+            </select>-->
+            <input type="text" name="from" placeholder="From ">
         </div>
 
         <div class="textbox">
             <i class="fa fa-long-arrow-down" aria-hidden="true"></i>
-            <input type="text" placeholder="TO" name="to" required/>
+            <!--<select name="to">
+                <option></option>
+                {% for d in Schedules %}
+                <option>{{d.to}}</option>
+                {% endfor %}
+            </select>-->
+            <input type="text" name="to" placeholder="From ">
         </div>
 
 

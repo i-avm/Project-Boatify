@@ -10,13 +10,19 @@ def welcome(request):
 
 def schedulelist(request):
     if request.method == 'POST':
-        d = Schedule.objects.all()
+        fromm = request.POST.get('from')
+        to = request.POST.get('to')
+        fromm = fromm.upper()
+        to = to.upper()
+
+        d = Schedule.objects.filter(fr=fromm, to=to)
         return render(request, 'BoatifyApp/schedulelist.html', {'Schedules': d})
     return render(request, 'BoatifyApp/schedulelist.html')
 
 
 def homepage(request):
-    return render(request, 'BoatifyApp/homepage.html')
+    d = Schedule.objects.filter()
+    return render(request, 'BoatifyApp/homepage.html', {'Schedules': d})
 
 
 def contact(request):
