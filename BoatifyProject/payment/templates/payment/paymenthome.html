@@ -1,13 +1,22 @@
 {% extends 'payment/header.html' %}
 {% load static %}
-{% block content %}
-<!--<h1 style="color:yellow">pay here</h1>-->
-<h1 style="color:yellow">Booking Details</h1>
-<h3 style="color:yellow">From : {{print.From}}</h3>
-<h3 style="color:yellow">To : {{print.To}}</h3>
-<h3 style="color:yellow">Time : {{print.Time}}</h3>
-<h3 style="color:yellow">Fare : {{print.Fare}}</h3>
-</br>
-<a href="#" style="color:red">Pay Now</a>
+{% block con %}
+<link rel="stylesheet" type="text/css" href="{% static 'payment/css/paymenthome.css'%}">
+{% endblock %}
 
+{% block content %}
+
+<div class="box">
+    <h1 style="color:yellow" align="left">Booking Details</h1>
+    <h3 style="color:yellow" align="left">From : {{print.From}}</h3>
+    <h3 style="color:yellow" align="left">To : {{print.To}}</h3>
+    <h3 style="color:yellow" align="left">Time : {{print.Time}}</h3>
+    </br>
+    <h3 style="color:yellow" align="left">Total Amount : {{print.Fare}}</h3>
+    </br>
+    <form>
+        <input type="submit" value="PAY NOW">
+    </form>
+
+</div>
 {% endblock %}
