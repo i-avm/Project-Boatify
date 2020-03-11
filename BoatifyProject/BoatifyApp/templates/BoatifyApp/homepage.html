@@ -1,6 +1,6 @@
 {% extends 'BoatifyApp/header.html' %}
 {% load static %}
-{% block con %}
+{% block cont %}
 <link rel="stylesheet" type="text/css" href="{% static 'BoatifyApp/css/home.css'%}">
 
 {% endblock %}
@@ -27,7 +27,7 @@
                 <option>{{d.fr}}</option>
                 {% endfor %}
             </select>-->
-            <input type="text" name="from" placeholder="From ">
+            <input type="text" name="from" placeholder="From" required>
         </div>
 
         <div class="textbox">
@@ -38,11 +38,11 @@
                 <option>{{d.to}}</option>
                 {% endfor %}
             </select>-->
-            <input type="text" name="to" placeholder="From ">
+            <input type="text" name="to" placeholder="To " required>
         </div>
 
 
-        <input type="submit" class="btn" name="" value="FIND BOATS"/>
+        <input type="submit" class="btn" value="FIND BOATS"/>
     </form>
 
 </div>

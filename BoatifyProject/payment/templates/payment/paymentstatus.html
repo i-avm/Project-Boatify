@@ -3,10 +3,20 @@
 {% block content %}
 
 <div class="container">
-    {{response}}
-    <div class="col my-4">
+    </br>
+    </br>
+    </br>
 
-        <h2>Payment status regarding your order Id {{response.ORDERID}}</h2>
+
+    <h3 style="color:white">Transaction ID : <span style="color:black">{{response.ORDERID}}</span></h3>
+    <h3 style="color:white">Transaction Amount : <span style="color:black">{{response.TXNAMOUNT}}</span></h3>
+    <h3 style="color:white">Status : <span style="color:black">{{response.STATUS}}</span></h3>
+    <h3 style="color:white">Response Msg : <span style="color:black">{{response.RESPMSG}}</span></h3>
+
+</br>
+    <div>
+
+        <h2 style="color:white">Payment status regarding your order Id <span style="color:black">{{response.ORDERID}}</span></h2>
         {% if response.RESPCODE == '01' %}
         ORDER SUCCESS
         {% else %}

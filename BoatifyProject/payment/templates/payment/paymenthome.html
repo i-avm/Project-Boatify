@@ -14,8 +14,10 @@
     </br>
     <h3 style="color:yellow" align="left">Total Amount : {{print.Fare}}</h3>
     </br>
-    <form action="{% url 'checkout' %}" method="post">
+    <form action="{% url 'paytm' %}" method="post">
         {% csrf_token %}
+
+        <input type="hidden" name="ffare" value={{print.Fare}}>
         <input type="submit" value="PAY NOW">
     </form>
 

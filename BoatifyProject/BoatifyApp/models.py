@@ -12,6 +12,7 @@ class Contact(models.Model):
         return self.name
 
 class Schedule(models.Model):
+    boatid = models.IntegerField(default= 0)
     fr = models.CharField(max_length=20)
     to = models.CharField(max_length=20)
     time = models.TimeField()

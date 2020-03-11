@@ -17,7 +17,7 @@ def schedulelist(request):
 
         d = Schedule.objects.filter(fr=fromm, to=to)
         return render(request, 'BoatifyApp/schedulelist.html', {'Schedules': d})
-    return render(request, 'BoatifyApp/schedulelist.html')
+    #return render(request, 'BoatifyApp/schedulelist.html')
 
 
 def homepage(request):
@@ -40,8 +40,7 @@ def contact(request):
 def thankyou(request):
     return render(request, 'BoatifyApp/thankyou.html')
 
-def login(request):
-    return render(request, 'BoatifyApp/login.html')
+
 
 def logout(request):
     auth.logout(request)
@@ -67,7 +66,7 @@ def login(request):
 def register(request):
     if (request.method == 'POST'):
         name1 = request.POST.get('name1')
-        name2 = request.POST.get('name2')
+        #name2 = request.POST.get('name2')
         username = request.POST.get('uname')
         email = request.POST.get('emailr')
         password_r1 = request.POST.get('pwr1')
@@ -80,7 +79,7 @@ def register(request):
                 messages.info(request, 'Email already taken!!')
                 return render(request, 'BoatifyApp/register.html')
             else:
-                user = User.objects.create_user(username=username, password=password_r1, email=email, first_name=name1, last_name=name2)
+                user = User.objects.create_user(username=username, password=password_r1, email=email, first_name=name1)
                 user.save()
                 return render(request, 'BoatifyApp/regsuccess.html')
         else:
