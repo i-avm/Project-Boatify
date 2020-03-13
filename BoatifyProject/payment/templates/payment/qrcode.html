@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Qrcode</title>
+</head>
+<body>
+<div align="center">
+    <h1>Success</h1>
+    <h3>Click on the QR Code to download it</h3>
+    <a href="{% static 'payment/images/qrcode_ticket.svg'%}" download="ticket_qrcode">
+        <img src="{% static 'payment/images/qrcode_ticket.svg'%}">
+    </a>
+    <a align="center" href="{% url 'homepage' %}"><h3>Back to Home</h3></a>
+</div>
+</body>
+</html>

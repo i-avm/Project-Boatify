@@ -10,8 +10,16 @@
 <body>
 
 <img class="wave" src="{% static 'BoatifyApp/images/wave.png'%}">
-<button><a class="navbar-brand" href="{% url 'homepage' %}"><img src="{% static 'BoatifyApp/images/boat.png'%}"
-                                                                 style="width:10px;height:10px;"></a></button>
+<a class="navbar-brand" href="{% url 'homepage' %}"><h3>
+    <span>B</span>
+    <span>O</span>
+    <span>A</span>
+    <span>T</span>
+    <span>I</span>
+    <span>F</span>
+    <span>Y</span>
+    <span>&nbsp;</span>
+</h3></a>
 <div class="container">
 
     <div class="img">
@@ -23,7 +31,8 @@
         <form action="{% url 'register' %}" method="post">
             {% csrf_token %}
 
-            <h2 class="title">Sign Up</h2>
+            <h3 class="title">Sign Up</h3>
+            <a href="{% url 'login' %}">Click here to Login</a>
             <div class="input-div one">
                 <div class="i">
                     <i class="fa fa-venus" aria-hidden="true"></i>
@@ -80,6 +89,7 @@
             </div>
             <!--<a href="#">Forgot Password?</a>-->
             <input type="submit" class="btn" value="Register">
+
         </form>
         <div>
             {% for message in messages %}

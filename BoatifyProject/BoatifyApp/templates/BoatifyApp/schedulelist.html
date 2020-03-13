@@ -17,9 +17,12 @@ th, td {
     </style>
 </head>
 <body background="{% static 'BoatifyApp/images/wave.png'%}">
-<h2>Schedule</h2>
 
-<table style="width:50%">
+<h1 align="center" style="color:red">SCHEDULES</h1>
+{% if Schedules %}
+
+
+<table align="center" style="width:50%">
     <tr>
         <th>Boat ID</th>
         <th>From</th>
@@ -34,7 +37,7 @@ th, td {
         <td>{{d.to}}</td>
         <td>{{d.time}}</td>
         <td>{{d.fare}}</td>
-        <form action="{% url 'payment' %}" method="post">
+        <form action="{% url 'seatres' %}" method="post">
             {% csrf_token %}
             <input type="hidden" name="fboatid" value={{d.boatid}}>
             <input type="hidden" name="ffr" value={{d.fr}}>
@@ -52,7 +55,11 @@ th, td {
     {% endfor %}
 
 </table>
-
+{% else %}
+<h2 align="center" style="color:red">No services at this time !!!</h2>
+<a align="center" href="{% url 'homepage' %}"><h3>Back to Home
+</h3></a>
+{% endif %}
 
 </body>
 </html>

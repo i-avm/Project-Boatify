@@ -8,20 +8,20 @@ from django.contrib.auth.models import User, auth
 def welcome(request):
     return render(request, 'BoatifyApp/welcome.html')
 
+def homepage(request):
+    return render(request, 'BoatifyApp/homepage.html')
+
 def schedulelist(request):
     if request.method == 'POST':
         fromm = request.POST.get('from')
         to = request.POST.get('to')
+        time = request.POST.get('time')
         fromm = fromm.upper()
         to = to.upper()
 
-        d = Schedule.objects.filter(fr=fromm, to=to)
+        d = Schedule.objects.filter(time=time, fr=fromm, to=to)
         return render(request, 'BoatifyApp/schedulelist.html', {'Schedules': d})
     #return render(request, 'BoatifyApp/schedulelist.html')
-
-
-def homepage(request):
-    return render(request, 'BoatifyApp/homepage.html')
 
 
 def contact(request):
@@ -37,6 +37,7 @@ def contact(request):
         return render(request, 'BoatifyApp/thankyou.html')
     else:
         return render(request, 'BoatifyApp/contact.html')
+
 def thankyou(request):
     return render(request, 'BoatifyApp/thankyou.html')
 

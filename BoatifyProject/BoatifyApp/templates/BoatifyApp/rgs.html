@@ -1,92 +1,37 @@
-{% load static %}
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Animated Login Form</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'BoatifyApp/css/login.css'%}">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
-</head>
-<body>
-
-<img class="wave" src="{% static 'BoatifyApp/images/wave.png'%}">
-<button><a class="navbar-brand" href="{% url 'homepage' %}"><img src="{% static 'BoatifyApp/images/boat.png'%}"
-                                                                 style="width:10px;height:10px;"></a></button>
-<div class="container">
-
-    <div class="img">
-        <img src="{% static 'BoatifyApp/images/bg.svg'%}">
-    </div>
-
-    <div class="login-content">
-
-        <form action="{% url 'register' %}" method="post">
-            {% csrf_token %}
-
-            <h2 class="title">Sign Up</h2>
-            <div class="input-div one">
-                <div class="i">
-                    <i class="fa fa-envelope" aria-hidden="true"></i>
-                </div>
-                <div class="div">
-                    <h5>Name</h5>
-
-
-                    <input type="text" name="name1" class="input" required>
-                </div>
-            </div>
-			<div class="input-div one">
-                <div class="i">
-                    <i class="fa fa-envelope" aria-hidden="true"></i>
-                </div>
-                <div class="div">
-                    <h5>UserName</h5>
-
-
-                    <input type="text" name="uname" class="input" required>
-                </div>
-            </div>
-			<div class="input-div one">
-                <div class="i">
-                    <i class="fa fa-envelope" aria-hidden="true"></i>
-                </div>
-                <div class="div">
-                    <h5>Email</h5>
-
-
-                    <input type="text" name="emailr" class="input" required>
-                </div>
-            </div>
-            <div class="input-div pass">
-                <div class="i">
-                    <i class="fas fa-lock"></i>
-                </div>
-                <div class="div">
-                    <h5>Password</h5>
-
-                    <input type="password" name="pwr1" class="input">
-                </div>
-            </div>
-			<div class="input-div pass">
-                <div class="i">
-                    <i class="fas fa-lock"></i>
-                </div>
-                <div class="div">
-                    <h5>Password</h5>
-
-                    <input type="password" name="pwr2" class="input">
-                </div>
-            </div>
-            <!--<a href="#">Forgot Password?</a>-->
-            <input type="submit" class="btn" value="Register">
-        </form>
-        <div>
-            {% for message in messages %}
-            <h3 style="color:yellow"> {{message}} </h3>
-            {% endfor %}
-        </div>
-    </div>
-</div>
-<script type="text/javascript" src="{% static 'BoatifyApp/js/main.js'%}"></script>
-</body>
+  <head>
+    <style>
+       /* Set the size of the div element that contains the map */
+      #map {
+        height: 400px;  /* The height is 400 pixels */
+        width: 100%;  /* The width is the width of the web page */
+       }
+    </style>
+  </head>
+  <body>
+    <h3>My Google Maps Demo</h3>
+    <!--The div element for the map -->
+    <div id="map"></div>
+    <script>
+// Initialize and add the map
+function initMap() {
+  // The location of Uluru
+  var uluru = {lat: -25.344, lng: 131.036};
+  // The map, centered at Uluru
+  var map = new google.maps.Map(
+      document.getElementById('map'), {zoom: 4, center: uluru});
+  // The marker, positioned at Uluru
+  var marker = new google.maps.Marker({position: uluru, map: map});
+}
+    </script>
+    <!--Load the API from the specified URL
+    * The async attribute allows the browser to render the page while the API loads
+    * The key parameter will contain your own API key (which is not needed for this tutorial)
+    * The callback parameter executes the initMap() function
+    -->
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgdI5liT8J_k48WJMnBhwOD07PqVzMdHw&callback=initMap">
+    </script>
+  </body>
 </html>

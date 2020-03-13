@@ -1,5 +1,9 @@
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
+import pyqrcode
+from .models import Seatres
+from pyqrcode import QRCode
+
 #from PayTm import Checksum
 
 # Create your views here.
@@ -7,13 +11,16 @@ from django.views.decorators.csrf import csrf_exempt
 MERCHANT_KEY = 'poESoXaHniaGcmKS'
 
 
+
 def payment(request):
     if request.method == 'POST':
+        boatid = request.POST.get('fboatid')
         ffr = request.POST.get('ffr')
         fto = request.POST.get('fto')
         ftime = request.POST.get('ftime')
         ffare = request.POST.get('ffare')
         Dict = {}
+        Dict['Boatid'] = boatid
         Dict['From'] = ffr
         Dict['To'] = fto
         Dict['Time'] = ftime
@@ -22,6 +29,65 @@ def payment(request):
     else:
         return render(request, 'payment/paymenthome.html')
 
+def seatres(request):
+    if request.method == 'POST':
+        boatid = request.POST.get('fboatid')
+        ffr = request.POST.get('ffr')
+        fto = request.POST.get('fto')
+        ftime = request.POST.get('ftime')
+        ffare = request.POST.get('ffare')
+        Dict = {}
+        Dict['Boatid'] = boatid
+        Dict['From'] = ffr
+        Dict['To'] = fto
+        Dict['Time'] = ftime
+        Dict['Fare'] = ffare
+
+        return render(request, 'payment/seatres.html', {'print': Dict})
+    else:
+        return render(request, 'payment/seatres.html', {'print': Dict})
+
+def seatdetails(request):
+    if request.method == 'POST':
+        boatid = request.POST.get('fboatid')
+        ffr = request.POST.get('ffr')
+        fto = request.POST.get('fto')
+        ftime = request.POST.get('ftime')
+        ffare = request.POST.get('ffare')
+        Dict = {}
+        Dict['Boatid'] = boatid
+        Dict['From'] = ffr
+        Dict['To'] = fto
+        Dict['Time'] = ftime
+        Dict['Fare'] = ffare
+
+        v = request.POST.getlist('checks[]')
+        vstr = ""
+        for i in v:
+            vstr += i
+            vstr += '-'
+        Dict['v'] = vstr
+        #emails = User.objects.filter(is_active = True).values_list('email')
+        emails = None
+        if request.user.is_authenticated:
+            emails = request.user.email
+        c = Seatres(boatid = boatid, email = emails, seatid=vstr)
+        c.save()
+        return render(request, 'payment/seatdetails.html', {'W':v, 'print':Dict})
+    else:
+        return render(request, 'payment/seatdetails.html', {'print': Dict})
+
+def qrcode(request):
+    # String which represent the QR code
+    #s = "www.geeksforgeeks.org"
+    current_user = request.user
+    s="email="+current_user.email
+    # Generate QR code
+    url = pyqrcode.create(s)
+
+    # Create and save the png file naming "myqr.png"
+    url.svg("payment\static\payment\images\qrcode_ticket.svg", scale=8)
+    return render(request, 'payment/qrcode.html')
 
 def paytm(request):
     if request.method == "POST":

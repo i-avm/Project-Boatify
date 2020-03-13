@@ -7,12 +7,12 @@
     </br>
     </br>
 
-
+    
     <h3 style="color:white">Transaction ID : <span style="color:black">{{response.ORDERID}}</span></h3>
     <h3 style="color:white">Transaction Amount : <span style="color:black">{{response.TXNAMOUNT}}</span></h3>
     <h3 style="color:white">Status : <span style="color:black">{{response.STATUS}}</span></h3>
     <h3 style="color:white">Response Msg : <span style="color:black">{{response.RESPMSG}}</span></h3>
-
+    <a href="{% url 'qrcode' %}">View Ticket</a>
 </br>
     <div>
 

@@ -8,11 +8,12 @@
 
 <div class="box">
     <h1 style="color:yellow" align="left">Booking Details</h1>
-    <h3 style="color:yellow" align="left">From : {{print.From}}</h3>
-    <h3 style="color:yellow" align="left">To : {{print.To}}</h3>
-    <h3 style="color:yellow" align="left">Time : {{print.Time}}</h3>
+    <h3 style="color:yellow" align="left">BoatID : <span style="color:white">{{print.Boatid}}</span></h3>
+    <h3 style="color:yellow" align="left">From : <span style="color:white">{{print.From}}</span></h3>
+    <h3 style="color:yellow" align="left">To : <span style="color:white">{{print.To}}</span></h3>
+    <h3 style="color:yellow" align="left">Time : <span style="color:white">{{print.Time}}</span></h3>
     </br>
-    <h3 style="color:yellow" align="left">Total Amount : {{print.Fare}}</h3>
+    <h3 style="color:yellow" align="left">Total Amount : <span style="color:white">{{print.Fare}}</span></h3>
     </br>
     <form action="{% url 'paytm' %}" method="post">
         {% csrf_token %}

@@ -7,16 +7,12 @@
 
 {% block content %}
 
+
 <div class="login-box">
-    <h1>
-        <span>B</span>
-        <span>O</span>
-        <span>A</span>
-        <span>T</span>
-        <span>I</span>
-        <span>F</span>
-        <span>Y</span>
-    </h1>
+    <h1 style="color:white">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BOOK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><h6>YOUR TICKET</h6></span></h1>
+
+
     <form action="{% url 'schedulelist' %}" method="post">
         {% csrf_token%}
         <div class="textbox">
@@ -42,8 +38,10 @@
         </div>
 
 
-        <input type="submit" class="btn" value="FIND BOATS"/>
+        <span style="margin: 10px;padding: 20px; border-bottom: 1px solid yellow;">Enter time: <input type="time" name="time" value="00:00"></span>
+        <input style="color:white;padding:10px;" type="submit" class="btn" value="Search BOATS"/>
     </form>
 
+</div>
 </div>
 {% endblock %}

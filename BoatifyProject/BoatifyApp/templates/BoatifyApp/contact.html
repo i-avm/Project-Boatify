@@ -3,7 +3,9 @@
 {% block content %}
 <div class="container">
         <div class="row">
-            <div class="col-sm-6 mx-auto" style="margin-top: 70px">
+            <div class="col-sm-8 mx-auto" style="margin-top: 70px;background-color: rgb(0,0,0);background-color: rgba(0,0,0, 0.85);
+            width: 80%;padding: 25px;text-align: center;">
+                <h2 style="color:yellow">Contact US</h2>
                 <form action="{% url 'contact' %}" method="post">
                     {% csrf_token %}
                     <div class="form-group row">
