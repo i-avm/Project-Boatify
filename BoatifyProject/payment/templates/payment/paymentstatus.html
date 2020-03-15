@@ -1,27 +1,17 @@
 {% extends 'payment/header.html' %}
-
+{% load static %}
+{% block con %}
+<link rel="stylesheet" type="text/css" href="{% static 'payment/css/paymenthome.css'%}">
+{% endblock %}
 {% block content %}
 
-<div class="container">
-    </br>
-    </br>
-    </br>
-
-    
-    <h3 style="color:white">Transaction ID : <span style="color:black">{{response.ORDERID}}</span></h3>
-    <h3 style="color:white">Transaction Amount : <span style="color:black">{{response.TXNAMOUNT}}</span></h3>
-    <h3 style="color:white">Status : <span style="color:black">{{response.STATUS}}</span></h3>
-    <h3 style="color:white">Response Msg : <span style="color:black">{{response.RESPMSG}}</span></h3>
+<div class="box" align="center">
+    <img id="succes-icon" src="{% static 'payment/images/check.png' %}" width="100" height="100">
+    <h4 style="color:yellow">The payment of Rs. {{amount}} was successful</h4>
     <a href="{% url 'qrcode' %}">View Ticket</a>
-</br>
+
     <div>
 
-        <h2 style="color:white">Payment status regarding your order Id <span style="color:black">{{response.ORDERID}}</span></h2>
-        {% if response.RESPCODE == '01' %}
-        ORDER SUCCESS
-        {% else %}
-        ORDER FAILURE
-        {% endif%}
 
     </div>
 
