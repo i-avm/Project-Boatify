@@ -7,8 +7,14 @@
 
 <div class="box" align="center">
     <img id="succes-icon" src="{% static 'payment/images/check.png' %}" width="100" height="100">
-    <h4 style="color:yellow">The payment of Rs. {{amount}} was successful</h4>
-    <a href="{% url 'qrcode' %}">View Ticket</a>
+    <h4 style="color:yellow">The payment of Rs. {{print.Amount}} was successful</h4>
+    <form method="post" action="{% url 'qrcode' %}">
+        {% csrf_token %}
+
+        <input type="hidden" name="fcusid" value={{print.CusId}}>
+        <input type="submit" value="View Ticket">
+    </form>
+
 
     <div>
 

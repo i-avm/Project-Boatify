@@ -7,5 +7,6 @@ urlpatterns = [
     path('seatres', views.seatres, name='seatres'),
     path('seatdetails', views.seatdetails, name='seatdetails'),
     path('charge', views.charge, name='charge'),
-    path('success/<str:args>/', views.successMsg, name="success"),
+    #path('success', views.successMsg, name="success"),
+    path('thankyou', views.thankyou, name='thankyou'),
     ]

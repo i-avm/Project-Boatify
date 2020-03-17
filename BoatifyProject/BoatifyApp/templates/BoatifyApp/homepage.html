@@ -17,29 +17,19 @@
         {% csrf_token%}
         <div class="textbox">
             <i class="fa fa-long-arrow-up" aria-hidden="true"></i>
-            <!--<select name="from">
-                <option></option>
-                {% for d in Schedules %}
-                <option>{{d.fr}}</option>
-                {% endfor %}
-            </select>-->
             <input type="text" name="from" placeholder="From" required>
         </div>
 
         <div class="textbox">
             <i class="fa fa-long-arrow-down" aria-hidden="true"></i>
-            <!--<select name="to">
-                <option></option>
-                {% for d in Schedules %}
-                <option>{{d.to}}</option>
-                {% endfor %}
-            </select>-->
             <input type="text" name="to" placeholder="To " required>
         </div>
 
 
-        <span style="margin: 10px;padding: 20px; border-bottom: 1px solid yellow;">Enter time: <input type="time" name="time" value="00:00"></span>
-        <input style="color:white;padding:10px;" type="submit" class="btn" value="Search BOATS"/>
+        Time: <input type="time" name="time" value="00:00">
+        </br>Date: <input type="date" name="date">
+
+        <span style="border-top: 4px solid yellow;"><input style="color:white;padding:10px;" type="submit" class="btn" value="Search BOATS"/></span>
     </form>
 
 </div>

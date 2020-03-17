@@ -19,7 +19,7 @@ background-color: rgb(0,0,0); /* Fallback color */
 .login-box h1{
 	float: left;
 	font-size: 40px;
-	margin-bottom: 50px;
+	margin-bottom: 10px;
 	border-bottom: 6px solid yellow;
 	padding: 13px 0;
 	text-shadow: 0 0 20px #4caf50;
@@ -29,8 +29,8 @@ background-color: rgb(0,0,0); /* Fallback color */
 	width: 100%;
 	overflow: hidden;
 	font-size: 20px;
-	padding: 8px 0;
-	margin: 8px 0;
+	padding: 4px 0;
+	margin: 4px 0;
 	border-bottom: 1px solid yellow;
 }
 .textbox i{

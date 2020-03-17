@@ -42,7 +42,8 @@ th, td {
             <input type="hidden" name="fboatid" value={{d.boatid}}>
             <input type="hidden" name="ffr" value={{d.fr}}>
             <input type="hidden" name="fto" value={{d.to}}>
-            <input type="hidden" name="ftime" value={{d.time}}>
+            <input type="hidden" name="ftime" value={{time}}>
+            <input type="hidden" name="fdate" value={{date}}>
             <input type="hidden" name="ffare" value={{d.fare}}>
             {% if user.is_authenticated %}
             <td><input type="submit" name="booknow" value="Book Now"></td>

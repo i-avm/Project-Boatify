@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from .models import Contact, Schedule
 from django.contrib import messages
 from django.contrib.auth.models import User, auth
@@ -16,11 +16,14 @@ def schedulelist(request):
         fromm = request.POST.get('from')
         to = request.POST.get('to')
         time = request.POST.get('time')
+        print('time',time)
+        date = request.POST.get('date')
         fromm = fromm.upper()
         to = to.upper()
 
         d = Schedule.objects.filter(time=time, fr=fromm, to=to)
-        return render(request, 'BoatifyApp/schedulelist.html', {'Schedules': d})
+        print(d)
+        return render(request, 'BoatifyApp/schedulelist.html', {'Schedules': d, 'date':date, 'time': time})
     #return render(request, 'BoatifyApp/schedulelist.html')
 
 
